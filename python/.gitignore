@@ -1,0 +1,5 @@
+# Python binding build artifacts (Windows native build)
+build/
+**/*.pyd
+**/*.so
+*.egg-info/
