@@ -31,6 +31,8 @@ TAGS
 *.m~
 python/*.egg-info/
 python/build/
+python/**/*.pyd
+python/**/*.so
 python/*.pyd
 python/*.so
 /doc/_build/
