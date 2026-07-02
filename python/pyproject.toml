@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "teaserpp-python"
+version = "2.0.0"
+description = "Python bindings for TEASER++"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["teaserpp_python*"]
+
+[tool.setuptools.package-data]
+teaserpp_python = ["*.pyd", "*.so", "*.pyi"]
