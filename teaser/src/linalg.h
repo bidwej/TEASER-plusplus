@@ -23,7 +23,7 @@ namespace teaser {
  * @param u 3-by-1 vector
  * @param x 3-by-3 skew symmetric matrix
  */
-Eigen::Matrix<double, 3, 3> hatmap(const Eigen::Matrix<double, 3, 1>& u) {
+inline inline inline inline inline inline Eigen::Matrix<double, 3, 3> hatmap(const Eigen::Matrix<double, 3, 1>& u) {
   Eigen::Matrix<double, 3, 3> x;
   // clang-format off
   x << 0,           -u(2),  u(1),
@@ -46,8 +46,8 @@ template <typename NumT, int N, int M>
 void vectorKron(const Eigen::Matrix<NumT, N, 1>& v1, const Eigen::Matrix<NumT, M, 1>& v2,
                 Eigen::Matrix<NumT, N * M, 1>* output) {
 #pragma omp parallel for collapse(2) shared(v1, v2, output)
-  for (size_t i = 0; i < N; ++i) {
-    for (size_t j = 0; j < M; ++j) {
+  for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < M; ++j) {
       (*output)[i * M + j] = v1[i] * v2[j];
     }
   }
@@ -65,8 +65,8 @@ Eigen::Matrix<NumT, Eigen::Dynamic, 1> vectorKron(const Eigen::Matrix<NumT, N, 1
                                                   const Eigen::Matrix<NumT, M, 1>& v2) {
   Eigen::Matrix<double, Eigen::Dynamic, 1> output(v1.rows() * v2.rows(), 1);
 #pragma omp parallel for collapse(2) shared(v1, v2, output)
-  for (size_t i = 0; i < v1.rows(); ++i) {
-    for (size_t j = 0; j < v2.rows(); ++j) {
+  for (int i = 0; i < static_cast<int>(v1.rows()); ++i) {
+    for (int j = 0; j < static_cast<int>(v2.rows()); ++j) {
       output[i * v2.rows() + j] = v1[i] * v2[j];
     }
   }

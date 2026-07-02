@@ -32,7 +32,7 @@ if (NOT spectra_POPULATED)
 endif()
 
 # teaser_io library
-add_library(teaser_io src/ply_io.cc)
+add_library(teaser_io STATIC src/ply_io.cc)
 target_include_directories(teaser_io
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
@@ -48,7 +48,7 @@ endif()
 add_library(teaserpp::teaser_io ALIAS teaser_io)
 
 # teaser_registration library
-add_library(teaser_registration
+add_library(teaser_registration STATIC
         src/certification.cc
         src/registration.cc
         src/graph.cc

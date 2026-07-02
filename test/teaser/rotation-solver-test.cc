@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 /**
  * Copyright 2020, Massachusetts Institute of Technology,
  * Cambridge, MA 02139
